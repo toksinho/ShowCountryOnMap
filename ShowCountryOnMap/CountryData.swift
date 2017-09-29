@@ -6,17 +6,15 @@
 //  Copyright © 2017 Ivica Tokic. All rights reserved.
 //
 
-import Foundation
+import MapKit
 
-class CountryData {
+class CountryData: NSObject, MKAnnotation {
     
-    let name: String
-    let latitude: Double
-    let longitude: Double
+    var title: String?
+    var coordinate: CLLocationCoordinate2D
     
-    init(name: String, latitude: Double, longitude: Double) {
-        self.name = name
-        self.latitude = latitude
-        self.longitude = longitude
+    init(title: String, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
     }
 }

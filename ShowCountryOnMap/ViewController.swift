@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class ViewController: UIViewController {
 
@@ -28,14 +29,12 @@ class ViewController: UIViewController {
                 
                 if swiftyJsonVar["message"] == "Not Found" {
                     self.showMapBtn.isEnabled = false
-                }
-                else {
-                    
+                } else {
                     if let restData = swiftyJsonVar[0].dictionaryObject {
                         self.countryDict = restData
                     }
                     if let name = self.countryDict["name"], let latlng = self.countryDict["latlng"] as? Array<Double>  {
-                        self.countryData = CountryData(name: name as! String, latitude: latlng[0], longitude: latlng[1])
+                        self.countryData = CountryData(title: name as! String, coordinate: CLLocationCoordinate2D(latitude: latlng[0], longitude: latlng[1]))
                     }
                     self.showMapBtn.isEnabled = true
                     
@@ -60,7 +59,6 @@ class ViewController: UIViewController {
         if segue.identifier == "showMap"
         {
             if let destination = segue.destination as? MapViewVC {
-                
                 destination.countryData = self.countryData
                 }
             }
