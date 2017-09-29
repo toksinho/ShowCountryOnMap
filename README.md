@@ -5,3 +5,7 @@ Enter name of the country and if country is found, button "Show on map" will be 
 
 
 API that is used is https://restcountries.eu/
+
+Data is downloaded with https://github.com/Alamofire/Alamofire
+
+Json is parsed with https://github.com/SwiftyJSON/SwiftyJSON
